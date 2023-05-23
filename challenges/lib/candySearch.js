@@ -20,12 +20,13 @@ const searchMaxPrice = (maxPrice) => {
 
 
 const searchCandies = (search, maxPrice) => {
-    result = (searchMaxPrice(maxPrice) && searchPartCandies(search)); 
-    return result.map(sweetResult => sweetResult.name)
+    let result1 = searchMaxPrice(maxPrice);
+    let result2 = searchPartCandies(search, result1);
+    return result2.map(sweetResult => sweetResult.name);
 };
 
-const searchPartCandies = (search) => {
-    return candies.filter( candy =>
+const searchPartCandies = (search, result1) => {
+    return result1.filter( candy =>
         candy.name.startsWith(search));
 }
 
@@ -37,10 +38,11 @@ const searchPartCandies = (search) => {
 
 module.exports = searchCandies;
 
-// = console.log(searchMaxPrice(10))
+// console.log(searchMaxPrice(1.50))
 // console.log(candies)
 // = console.log(searchPartCandies("Ma"))
 // = console.log(searchCandies(candies))
-// = console.log(searchMaxPrice(10) && searchPartCandies("Ma"))
-// console.log(searchCandies("Ma", 10))
-// console.log(showSearchCandyNames)
+// console.log(searchMaxPrice(2) && searchPartCandies("Ma"))
+// ---console.log(searchCandies("Ma", 2))
+// ------console.log(searchMaxPrice(2) && searchPartCandies("Ma"))
+// console.log(searchCandies("Ma", 2))
